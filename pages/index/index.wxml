@@ -23,16 +23,6 @@
 </view>
 <van-cell wx:if="{{ website_0 }}" title="官网" value="{{ website_0 }}" is-link bind:click="copy" data-v="{{ website_0 }}" />
 <van-cell wx:if="{{ website_1 }}" title="官网" value="{{ website_1 }}" is-link bind:click="webview" data-v="{{ website_1 }}" />
-<view wx:if="{{ qiyeweixin_open == '1' }}" class="contact">
-  <view wx:if="{{ kefu_url && kefu_corpId }}" class="item item2" bindtap="kefu">
-    <!-- <cell-kefu plugid='{{ plugid }}'  /> -->
-    <van-icon name="chat" color="#2f91f1" size="88rpx" />
-    <text>在线咨询</text>
-  </view>
-  <view wx:if="{{ url }}" class="item">
-    <cell-qun contactText="加入微信群" contactTextBlod="{{ false }}" iconBorderRadius="{{ 5 }}" url='{{ url }}'  />
-  </view>
-</view>
 
 <van-cell-group wx:for="{{ shops }}" wx:key="id" title="{{ item.name }}">
   <van-cell icon="location-o" title="{{ item.address }}" is-link data-idx="{{ index }}" bind:click="gomap" />

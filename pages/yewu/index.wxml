@@ -4,8 +4,6 @@
     <navigator url="/pages/goods-details/index?id={{ item.id }}"><image class="img" mode="aspectFill" src="{{item.pic}}"></image></navigator>
     <view class="goods-info">
       <view class="title van-multi-ellipsis--l2"><navigator url="/pages/goods-details/index?id={{ item.id }}">{{item.name}}</navigator></view>
-      <view wx:if="{{ item.stores > 0 }}" class="price">¥ {{item.minPrice}}</view>
-      <view wx:else class="price price000">查看详情</view>
     </view>
   </view>
 </view>

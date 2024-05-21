@@ -10,10 +10,7 @@
     <view wx:if="{{ goodsDetail.basicInfo.stores > 0 }}" class="goods-info-top-container">
       <view class="goods-profile">
         <view class="p"><text>¥</text> {{selectSizePrice}}</view>
-        <view wx:if="{{goodsDetail.basicInfo.originalPrice && goodsDetail.basicInfo.originalPrice > 0}}"
-          class="goods-price" style='color:#aaa;text-decoration:line-through;padding: 15rpx 0rpx 0rpx 15rpx;'>
-          <text>¥</text> {{selectSizeOPrice}}
-        </view>
+       
       </view>
     </view>
     <view class="goods-title">{{goodsDetail.basicInfo.name}}</view>
