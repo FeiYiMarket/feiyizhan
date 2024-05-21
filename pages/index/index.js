@@ -62,18 +62,6 @@ Page({
       }, 1000)
       return
     }
-    if (!userBaseInfo.mobile) {
-      Dialog.confirm({
-        message: '感谢您的莅临\n\n可以与您交换名片么～',
-        theme: 'round-button',
-        confirmButtonText: '赐名片',
-        cancelButtonText: '残忍拒绝～',
-        confirmButtonOpenType: 'getPhoneNumber'
-      }).then(() => {
-        console.log(222)
-      }).catch(() => {})
-      return
-    }
   },
   async about() {
     const res = await WXAPI.cmsPage('about')

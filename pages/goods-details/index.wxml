@@ -7,12 +7,7 @@
     </swiper>
   </view>
   <view class="goods-info">
-    <view wx:if="{{ goodsDetail.basicInfo.stores > 0 }}" class="goods-info-top-container">
-      <view class="goods-profile">
-        <view class="p"><text>¥</text> {{selectSizePrice}}</view>
-       
-      </view>
-    </view>
+    
     <view class="goods-title">{{goodsDetail.basicInfo.name}}</view>
     <view class="characteristic">{{goodsDetail.basicInfo.characteristic}}</view>
   </view>
