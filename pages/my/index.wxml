@@ -13,7 +13,6 @@
 </view>
 <van-grid column-num="3" clickable>
  
-  <van-grid-item icon="comment-circle-o" text="留言/反馈" url="/pages/my/feedback" />
   <van-grid-item icon="balance-pay" text="开票信息" url="/pages/about/index?key=invoice" />
   <van-grid-item icon="cash-back-record" text="申请开票" url="/pages/invoice/apply" />
 </van-grid>
