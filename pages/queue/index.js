@@ -1,132 +1,66 @@
-const WXAPI = require('apifm-wxapi')
-const AUTH = require('../../utils/auth')
+// pages/queue/index.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    mobile: undefined, // 手机号码
+
   },
-  onLoad: function (options) {
-    this.queuingTypes()
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
   },
-  onShow: function () {
-    AUTH.checkHasLogined().then(isLogined => {
-      if (!isLogined) {
-        AUTH.authorize().then( aaa => {
-          this.queuingMy()
-          this.userDetail()
-        })
-      } else {
-        this.queuingMy()
-        this.userDetail()
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
-  onShareAppMessage: function() {    
-    return {
-      title: '在线取号 ' + wx.getStorageSync('comName'),
-      path: '/pages/queue/index?inviter_id=' + wx.getStorageSync('uid')
-    }
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
   },
-  async queuingTypes() {
-    wx.showLoading({
-      title: '',
-    })
-    const res = await WXAPI.queuingTypes()
-    wx.hideLoading({
-      success: (res) => {},
-    })
-    if (res.code == 0) {
-      this.setData({
-        list: res.data
-      })
-    }
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
-  async queuingMy() {
-    const res = await WXAPI.queuingMy(wx.getStorageSync('token'))
-    if (res.code == 0) {
-      const mylist = []
-      res.data.forEach(ele => {
-        const queuingLog  = ele.queuingLog
-        const queuingUpType = ele.queuingUpType
-        const waitMinitus = (queuingLog.number - queuingUpType.curNumber -1) * queuingUpType.minitus
-        if (waitMinitus) {
-          queuingLog.waitMinitus = waitMinitus
-        }
-        queuingLog.typeEntity = queuingUpType
-        mylist.push(queuingLog)
-      })
-      this.setData({
-        mylist
-      })
-    }
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
   },
-  async queuingGet(e) {
-    const index = e.currentTarget.dataset.index
-    const queueType = this.data.list[index]
-    const isLogined = await AUTH.checkHasLogined()
-    if (!isLogined) {
-      AUTH.login(this)
-      return
-    }
-    wx.showLoading({
-      title: '',
-    })
-    const res = await WXAPI.queuingGet(wx.getStorageSync('token'), queueType.id)
-    wx.hideLoading({
-      success: (res) => {},
-    })
-    if (res.code != 0) {
-      wx.showToast({
-        title: res.msg,
-        icon: 'none'
-      })
-    } else {
-      wx.showToast({
-        title: '取号成功'
-      })
-      this.queuingMy()
-    }
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
   },
-  // 获取用户信息以及手机号码
-  async userDetail() {
-    const res = await WXAPI.userDetail(wx.getStorageSync('token'))
-    if (res.code == 0) {
-      this.setData({
-        mobile: res.data.base.mobile
-      })
-    }
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
   },
-  async login() {
-    await AUTH.authorize()
-    this.queuingMy()
-    this.userDetail()
-  },
-  async getPhoneNumber(e) {
-    console.log(e);
-    if (!e.detail.errMsg || e.detail.errMsg != "getPhoneNumber:ok") {
-      wx.showToast({
-        title: e.detail.errMsg,
-        icon: 'none'
-      })
-      return;
-    }
-    let res
-    const extConfigSync = wx.getExtConfigSync()
-    if (extConfigSync.subDomain) {
-      // 服务商模式
-      res = await WXAPI.wxappServiceBindMobileV2({
-        token: wx.getStorageSync('token'),
-        code: e.detail.code
-      })
-    } else {
-      res = await WXAPI.bindMobileWxappV2(wx.getStorageSync('token'), e.detail.code)
-    }
-    if (res.code == 0) {
-      this.userDetail()
-    } else {
-      wx.showToast({
-        title: res.msg,
-        icon: 'none'
-      })
-    }
-  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
 })
