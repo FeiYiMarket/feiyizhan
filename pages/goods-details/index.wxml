@@ -27,10 +27,7 @@
       <parser html="{{goodsDetail.content}}" />
     </view>
   </view>
-  <van-goods-action wx:if="{{ goodsDetail.basicInfo.stores > 0 }}">
-    <van-goods-action-button text="立即购买" bind:click="tobuy" />
-  </van-goods-action>
-  <van-goods-action wx:else>
+  <van-goods-action >
     <van-goods-action-button text="在线咨询" bind:click="kefu" />
   </van-goods-action>
 </view>
@@ -61,10 +58,5 @@
       </view>
     </block>
   </view>
-  <van-cell title="购买数量">
-    <view>
-      <van-stepper value="{{ buyNumber }}" min="{{ buyNumMin }}" max="{{ buyNumMax }}" bind:change="stepChange" />
-    </view>
-  </van-cell>
-  <van-button data-shopType="{{shopType}}" bindtap="buyNow" type="danger" block>立即购买</van-button>
+  
 </van-popup>

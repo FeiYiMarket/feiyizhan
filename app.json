@@ -9,19 +9,10 @@
     "pages/select-address/index",
     "pages/address-add/index",
     "pages/my/index",
-    "pages/maidan/index",
-    "pages/coupons/index",
-    "pages/coupons/merge",
-    "pages/invoice/list",
-    "pages/invoice/apply",
-    "pages/live/index",
     "pages/help/detail",
     "pages/help/index",
     "pages/about/index",
-    "pages/my/feedback",
-    "pages/2b/submit",
-    "pages/wifi/index",
-    "pages/queue/index"
+    "pages/my/feedback"
   ],
   "permission": {
     "scope.userLocation": {
