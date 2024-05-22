@@ -27,9 +27,6 @@
       <parser html="{{goodsDetail.content}}" />
     </view>
   </view>
-  <van-goods-action >
-    <van-goods-action-button text="在线咨询" bind:click="kefu" />
-  </van-goods-action>
 </view>
 
 <van-popup show="{{ !hideShopPopup }}" round closeable position="bottom"
