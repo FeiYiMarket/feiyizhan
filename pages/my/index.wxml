@@ -11,15 +11,16 @@
     <view class="nick" bindtap="editNick">{{ userBaseInfo.nick ? userBaseInfo.nick : '点击设置昵称' }}</view>
   </view>
 </view>
-<van-grid column-num="3" clickable>
- 
+<van-grid clickable>
   <van-grid-item icon="balance-pay" text="开票信息" url="/pages/about/index?key=invoice" />
-  <van-grid-item icon="cash-back-record" text="申请开票" url="/pages/invoice/apply" />
 </van-grid>
 <view class="space van-hairline--bottom"></view>
 <van-cell title="清除缓存" is-link bind:click="clearStorage" />
 <van-cell title="当前版本" value="{{version}}" />
-
+<view wx:if="{{ qrcode }}">
+  <image class="qrcode" src="{{ qrcode }}" mode="widthFix"></image>
+  <view class="qrcode-txt">微信扫一扫快速保存</view>
+</view>
 
 <van-dialog
   use-slot

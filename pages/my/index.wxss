@@ -174,3 +174,14 @@ page,view,image,input {
   opacity: 0;
   z-index: 99;
 }
+.qrcode {
+  width: 400rpx;
+  margin-top: 64rpx;
+  margin-left: 175rpx;
+  margin-bottom: 32rpx; 
+}
+.qrcode-txt {
+  text-align: center;
+  color:#999;
+  font-size: 24rpx;
+}

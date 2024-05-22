@@ -12,6 +12,8 @@ Page({
     getApp().configLoadOK = () => {
       this.readConfigVal()
     }
+    
+    this.fetchQrcode()
 	},
   onShow() {
     AUTH.wxaCode().then(code => {
@@ -98,6 +100,27 @@ Page({
     this.setData({
       userBaseInfo: getApp().globalData.userBaseInfo
     })
+  },
+  async fetchQrcode(){
+    const res = await WXAPI.wxaQrcode({
+      scene: wx.getStorageSync('uid') + ',' + this.data.key,
+      page: 'pages/about/index',
+      is_hyaline: true,
+      autoColor: true,
+      expireHours: 1
+    })
+    if (res.code ==  41030) {
+      wx.showToast({
+        title: '上线以后才可以获取二维码',
+        icon: 'none'
+      })
+      return
+    }
+    if (res.code == 0) {
+      this.setData({
+        qrcode: res.data
+      })
+    }
   },
   async onChooseAvatar(e) {
     console.log(e);

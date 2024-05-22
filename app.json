@@ -5,14 +5,10 @@
     "pages/notice/show",
     "pages/yewu/index",
     "pages/goods-details/index",
-    "pages/to-pay-order/index",
-    "pages/select-address/index",
-    "pages/address-add/index",
     "pages/my/index",
     "pages/help/detail",
     "pages/help/index",
-    "pages/about/index",
-    "pages/my/feedback"
+    "pages/about/index"
   ],
   "permission": {
     "scope.userLocation": {

@@ -41,5 +41,3 @@
 <view wx:if="{{ aboutData }}" class="content">
   <parser html="{{aboutData.info.content}}" />
 </view>
-
-<van-dialog id="van-dialog" show-cancel-button bind:getphonenumber="getPhoneNumber" />
