@@ -21,12 +21,23 @@
   <view class="l">{{ comName }}</view>
   <view class="r">{{ siteStatisticsData.statistics.users }}位朋友来过</view>
 </view>
-<van-cell wx:if="{{ website_0 }}" title="官网" value="{{ website_0 }}" is-link bind:click="copy" data-v="{{ website_0 }}" />
-<van-cell wx:if="{{ website_1 }}" title="官网" value="{{ website_1 }}" is-link bind:click="webview" data-v="{{ website_1 }}" />
+<van-cell class="r" wx:if="{{ website_1 }}" title="官网" value="{{ website_1 }}" is-link bind:click="webview" data-v="{{ website_1 }}" />
 
-<van-cell-group wx:for="{{ shops }}" wx:key="id" title="{{ item.name }}">
+<van-cell-group wx:for="{{ shops }}" wx:key="id" >
   <van-cell icon="location-o" title="{{ item.address }}" is-link data-idx="{{ index }}" bind:click="gomap" />
   <van-cell icon="phone-o" title="{{ item.linkPhone }}" is-link data-idx="{{ index }}" bind:click="callMobile" />
+  <view wx:if="{{ qiyeweixin_open == '1' }}" class="contact">
+  <view wx:if="{{ kefu_url && kefu_corpId }}" class="item item2" bindtap="call_kefu">
+    <!-- <cell-kefu plugid='{{ wexin_plugid }}'  /> -->
+    <van-icon name="chat" color="#2f91f1" size="88rpx" />
+    <text>在线咨询</text>
+  </view>
+  <view wx:if="{{ wexin_url }}" class="item">
+    <cell-qun contactText="微信群" contactTextBlod="{{ false }}" iconBorderRadius="{{ 5 }}" url='{{ wexin_url }}'  />
+  </view>
+</view>
+
+
 </van-cell-group>
 <view class="notice-box" wx:if="{{noticeList}}">
   <swiper class="notice_swiper" vertical autoplay circular interval="8000">

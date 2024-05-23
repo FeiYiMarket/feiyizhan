@@ -48,9 +48,10 @@ Page({
       comName: wx.getStorageSync('comName'),
       website_0: wx.getStorageSync('website_0'),
       website_1: wx.getStorageSync('website_1'),
+      wexin_plugid: wx.getStorageSync('wexin_plugid'),
+      wexin_url: wx.getStorageSync('wexin_url'),
       kefu_url: wx.getStorageSync('kefu_url'),
       kefu_corpId: wx.getStorageSync('kefu_corpId'),
-      url: wx.getStorageSync('url'),
       qiyeweixin_open: wx.getStorageSync('qiyeweixin_open'),
     })
   },
@@ -186,11 +187,14 @@ Page({
       })
     }
   },
-  kefu() {
+  call_kefu() {
+    console.warn("call_kefu invoked."+wx.getStorageSync('kefu_corpId')+wx.getStorageSync('kefu_url'))
     wx.openCustomerServiceChat({
         extInfo: {url: wx.getStorageSync('kefu_url')},
         corpId: wx.getStorageSync('kefu_corpId'),
-        success(res) {}
+        success(res) {console.debug("success")},
+        fail(res) {console.debug("fail")},
+        complete(res) {console.debug("complete")}
     })
   },
 })

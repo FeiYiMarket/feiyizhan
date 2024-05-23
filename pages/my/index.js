@@ -61,7 +61,7 @@ Page({
       path: 'pages/index/index?iv_subDomain=' + this.data.subDomain
     })
   },
-  kefu() {
+  call_kefu() {
     wx.openCustomerServiceChat({
         extInfo: {url: wx.getStorageSync('kefu_url')},
         corpId: wx.getStorageSync('kefu_corpId'),
